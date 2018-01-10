@@ -20,6 +20,13 @@ package org.wso2.carbon.privacy;
 
 /**
  * Confidential objects has a pseudonym for the name as an Id.
+ * Implement this interface whenever you have some object to be logged while retaining unique
+ * identifier which can be correlated to real object.
+ * Used for things like
+ * <ul>
+ *     <li>User: object where we do not want to expose real user name</li>
+ *     <li>email: where we do not want to expose real email address</li>
+ * </ul>
  */
 public interface Confidential {
 
