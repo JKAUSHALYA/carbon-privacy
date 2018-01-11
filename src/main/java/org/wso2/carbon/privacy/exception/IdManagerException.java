@@ -16,31 +16,22 @@
  * under the License.
  */
 
-package org.wso2.carbon.privacy;
-
-import org.wso2.carbon.privacy.exception.IdManagerException;
+package org.wso2.carbon.privacy.exception;
 
 /**
- * Default implementation of the Id manager.
+ * Represents a id manager related exception.
  */
-public class DefaultIdManager implements IdManager {
+public class IdManagerException extends Exception {
 
-    @Override
-    public String getNameFromId(String id) {
-        return id;
+    public IdManagerException(String message) {
+        super(message);
     }
 
-    @Override
-    public String getIdFromName(String name) {
-        return name;
+    public IdManagerException(Throwable throwable) {
+        super(throwable);
     }
 
-    @Override
-    public Identifiable addIdForName(Identifiable identifiable) throws IdManagerException {
-        return null;
-    }
-
-    @Override
-    public void removeIdForName(Identifiable identifiable) throws IdManagerException {
+    public IdManagerException(String message, Throwable throwable) {
+        super(message, throwable);
     }
 }

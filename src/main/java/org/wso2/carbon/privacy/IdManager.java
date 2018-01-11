@@ -18,6 +18,8 @@
 
 package org.wso2.carbon.privacy;
 
+import org.wso2.carbon.privacy.exception.IdManagerException;
+
 /**
  * Manager to handle name and id mapping.
  */
@@ -28,19 +30,27 @@ public interface IdManager {
      * @param id User id of the user.
      * @return Name as a string.
      */
-    String getNameFromId(String id);
+    String getNameFromId(String id) throws IdManagerException;
 
     /**
      * Retrieve the identifiable's id from name.
      * @param name Name of the identifiable.
      * @return Id as a string.
      */
-    String getIdFromName(String name);
+    String getIdFromName(String name) throws IdManagerException;
 
     /**
      * Add an id for identifiable that does not currently have an id.
      * @param identifiable Identifiable to be updated.
      * @return Updated identifiable.
+     * @throws IdManagerException In an underlying error.
      */
-    Identifiable addIdForName(Identifiable identifiable);
+    Identifiable addIdForName(Identifiable identifiable) throws IdManagerException;
+
+    /**
+     * Remove the id and name association for the give identifiable.
+     * @param identifiable Identifiable to be update.
+     * @throws IdManagerException In an underlying error.
+     */
+    void removeIdForName(Identifiable identifiable) throws IdManagerException;
 }

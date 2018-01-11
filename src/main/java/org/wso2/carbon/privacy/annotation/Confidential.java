@@ -18,12 +18,14 @@
 
 package org.wso2.carbon.privacy.annotation;
 
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * Confidential objects has a pseudonym for the name as an Id.
- * Implement this interface whenever you have some object to be logged while retaining unique
+ * Add this annotation whenever you have some object to be logged while retaining unique
  * identifier which can be correlated to real object.
  * Used for things like
  * <ul>
@@ -32,5 +34,6 @@ import java.lang.annotation.RetentionPolicy;
  * </ul>
  */
 @Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
 public @interface Confidential {
 }
