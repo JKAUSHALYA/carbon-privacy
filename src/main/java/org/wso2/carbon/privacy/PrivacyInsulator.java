@@ -18,6 +18,12 @@
 
 package org.wso2.carbon.privacy;
 
+import org.wso2.carbon.privacy.annotation.Confidential;
+import org.wso2.carbon.privacy.annotation.Pseudonym;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 /**
  * Insulator to prevent missus of sensitive information.
  */
@@ -31,6 +37,7 @@ public class PrivacyInsulator<T> {
 
     /**
      * Get the underlying object.
+     *
      * @return T
      */
     public T getSource() {
@@ -39,6 +46,7 @@ public class PrivacyInsulator<T> {
 
     /**
      * Get the value of the underlying object in privacy safe manner.
+     *
      * @return Value as a String.
      */
     public String getValue() {
@@ -48,10 +56,32 @@ public class PrivacyInsulator<T> {
     @Override
     public String toString() {
 
-        if (t instanceof Confidential) {
-            return ((Confidential) t).getId();
-        } else {
+        Class tClass = t.getClass();
+
+        if (!tClass.isAnnotationPresent(Confidential.class)) {
             return Integer.toString(t.hashCode());
         }
+
+        for (Method method : tClass.getMethods()) {
+            if (method.isAnnotationPresent(Pseudonym.class)) {
+                try {
+                    Object object = method.invoke(t);
+                    if (object instanceof String) {
+                        return (String) object;
+                    } else {
+                        // TODO: new custom exception.
+                        throw new RuntimeException("Return type is wrong.");
+                    }
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    // TODO: create a custom exception.
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+        // TODO: New custom exception.
+        throw new RuntimeException("Classes marked with confidential annotation should have a method with pseudonym " +
+                "annotation.");
+
     }
 }

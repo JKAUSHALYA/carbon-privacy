@@ -19,20 +19,19 @@
 package org.wso2.carbon.privacy;
 
 /**
- * Confidential objects has a pseudonym for the name as an Id.
- * Implement this interface whenever you have some object to be logged while retaining unique
- * identifier which can be correlated to real object.
- * Used for things like
- * <ul>
- *     <li>User: object where we do not want to expose real user name</li>
- *     <li>email: where we do not want to expose real email address</li>
- * </ul>
+ * Object that can be identified from a name and an ID.
  */
-public interface Confidential {
+public interface Identifiable {
 
     /**
-     * Get the the pseudonym for the name.
-     * @return Pseudonymous id as a string.
+     * Get the ID related to this identifiable.
+     * @return ID as a string.
      */
     String getId();
+
+    /**
+     * Get the name associated with this identifiable.
+     * @return Name as a string.
+     */
+    String getName();
 }

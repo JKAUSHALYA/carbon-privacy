@@ -19,28 +19,28 @@
 package org.wso2.carbon.privacy;
 
 /**
- * Manager to handle username and user id mapping.
+ * Manager to handle name and id mapping.
  */
-public interface UserIdManager {
+public interface IdManager {
 
     /**
-     * Retrieve username from user's user id.
-     * @param userId User id of the user.
-     * @return Username as a string.
+     * Retrieve name from the identifiable's id.
+     * @param id User id of the user.
+     * @return Name as a string.
      */
-    String getUsernameFromUserId(String userId);
+    String getNameFromId(String id);
 
     /**
-     * Retrieve user id from user's username.
-     * @param username Username of the user.
-     * @return User id as a string.
+     * Retrieve the identifiable's id from name.
+     * @param name Name of the identifiable.
+     * @return Id as a string.
      */
-    String getUserIdFromUsername(String username);
+    String getIdFromName(String name);
 
     /**
-     * Add an user id for user that does not currently have an user id.
-     * @param username Username of the user.
-     * @param userId id of the user.
+     * Add an id for identifiable that does not currently have an id.
+     * @param identifiable Identifiable to be updated.
+     * @return Updated identifiable.
      */
-    void addUserIdForUsername(String username, String userId);
+    Identifiable addIdForName(Identifiable identifiable);
 }

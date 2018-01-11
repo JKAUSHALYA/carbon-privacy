@@ -22,8 +22,8 @@ import org.osgi.framework.BundleContext;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
-import org.wso2.carbon.privacy.UserIdManager;
-import org.wso2.carbon.privacy.DefaultUserIdManager;
+import org.wso2.carbon.privacy.IdManager;
+import org.wso2.carbon.privacy.DefaultIdManager;
 
 /**
  * Service component class for the carbon privacy service.
@@ -37,6 +37,6 @@ public class CarbonPrivacyComponent {
     protected void activate(ComponentContext componentContext) {
 
         BundleContext bundleContext = componentContext.getBundleContext();
-        bundleContext.registerService(UserIdManager.class.getName(), new DefaultUserIdManager(), null);
+        bundleContext.registerService(IdManager.class.getName(), new DefaultIdManager(), null);
     }
 }

@@ -19,21 +19,22 @@
 package org.wso2.carbon.privacy;
 
 /**
- * Default implementation of the User ID manager.
+ * Default implementation of the Id manager.
  */
-public class DefaultUserIdManager implements UserIdManager {
+public class DefaultIdManager implements IdManager {
 
     @Override
-    public String getUsernameFromUserId(String userId) {
-        return userId;
+    public String getNameFromId(String id) {
+        return id;
     }
 
     @Override
-    public String getUserIdFromUsername(String username) {
-        return username;
+    public String getIdFromName(String name) {
+        return name;
     }
 
     @Override
-    public void addUserIdForUsername(String username, String userId) {
+    public Identifiable addIdForName(Identifiable identifiable) {
+        return null;
     }
 }

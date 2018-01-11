@@ -19,33 +19,33 @@
 package org.wso2.carbon.privacy.test;
 
 import org.testng.annotations.Test;
-import org.wso2.carbon.privacy.DefaultUserIdManager;
+import org.wso2.carbon.privacy.DefaultIdManager;
 
 import static org.testng.Assert.assertEquals;
 
 /**
- * Default user id manager related test cases.
+ * Default id manager related test cases.
  */
-public class DefaultUserIdManagerTests {
+public class DefaultIdManagerTests {
 
-    private static final String DEFAULT_USER_NAME = "admin";
-    private static final String DEFAULT_USER_ID = "12345";
+    private static final String DEFAULT_NAME = "admin";
+    private static final String DEFAULT_ID = "12345";
 
     @Test
     public void getUsernameFromUserIdValidTestCase() {
 
-        DefaultUserIdManager defaultUserIdManager = new DefaultUserIdManager();
-        String username = defaultUserIdManager.getUserIdFromUsername(DEFAULT_USER_ID);
+        DefaultIdManager defaultIdManager = new DefaultIdManager();
+        String name = defaultIdManager.getNameFromId(DEFAULT_ID);
 
-        assertEquals(username, DEFAULT_USER_ID);
+        assertEquals(name, DEFAULT_ID);
     }
 
     @Test
     public void getUserIdFromUsernameValidTestCase() {
 
-        DefaultUserIdManager defaultUserIdManager = new DefaultUserIdManager();
-        String userId = defaultUserIdManager.getUserIdFromUsername(DEFAULT_USER_NAME);
+        DefaultIdManager defaultIdManager = new DefaultIdManager();
+        String id = defaultIdManager.getIdFromName(DEFAULT_NAME);
 
-        assertEquals(userId, DEFAULT_USER_NAME);
+        assertEquals(id, DEFAULT_NAME);
     }
 }

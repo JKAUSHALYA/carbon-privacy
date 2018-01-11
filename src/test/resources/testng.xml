@@ -22,7 +22,8 @@
 <suite name="carbon-privacy-unit-tests">
     <test name="carbon-privacy-tests-all">
         <classes>
-            <class name="org.wso2.carbon.privacy.test.DefaultUserIdManagerTests" />
+            <class name="org.wso2.carbon.privacy.test.DefaultIdManagerTests" />
+            <class name="org.wso2.carbon.privacy.test.PrivacyInsulatorTests"/>
         </classes>
     </test>
 </suite>
