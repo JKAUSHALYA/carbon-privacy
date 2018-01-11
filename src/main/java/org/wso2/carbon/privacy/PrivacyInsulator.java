@@ -20,6 +20,7 @@ package org.wso2.carbon.privacy;
 
 import org.wso2.carbon.privacy.annotation.Confidential;
 import org.wso2.carbon.privacy.annotation.Pseudonym;
+import org.wso2.carbon.privacy.exception.PrivacyRuntimeException;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -69,19 +70,16 @@ public class PrivacyInsulator<T> {
                     if (object instanceof String) {
                         return (String) object;
                     } else {
-                        // TODO: new custom exception.
-                        throw new RuntimeException("Return type is wrong.");
+                        throw new PrivacyRuntimeException("Invalid return type for the method. Method should return " +
+                                "an instance of String.");
                     }
                 } catch (IllegalAccessException | InvocationTargetException e) {
-                    // TODO: create a custom exception.
-                    throw new RuntimeException(e);
+                    throw new PrivacyRuntimeException(e);
                 }
             }
         }
 
-        // TODO: New custom exception.
-        throw new RuntimeException("Classes marked with confidential annotation should have a method with pseudonym " +
-                "annotation.");
-
+        throw new PrivacyRuntimeException("Classes marked with confidential annotation should have a method with " +
+                "pseudonym annotation.");
     }
 }
