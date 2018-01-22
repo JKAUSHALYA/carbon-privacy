@@ -40,6 +40,22 @@ public interface IdManager {
     String getIdFromName(String name) throws IdManagerException;
 
     /**
+     * Get an Identifiable object related to the given name.
+     * @param name Name that is related to the identifiable object.
+     * @return Instance of Identifiable.
+     * @throws IdManagerException Error while retrieving information.
+     */
+    Identifiable getIdentifiableFromName(String name) throws IdManagerException;
+
+    /**
+     * Get an Identifiable object related to the given id.
+     * @param id Id that is related to the identifiable object.
+     * @return Instance of Identifiable.
+     * @throws IdManagerException Error while retrieving information.
+     */
+    Identifiable getIdentifiableFromId(String id) throws IdManagerException;
+
+    /**
      * Add an id for identifiable that does not currently have an id.
      * @param identifiable Identifiable to be updated.
      * @return Updated identifiable.

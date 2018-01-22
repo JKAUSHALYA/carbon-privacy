@@ -30,7 +30,7 @@ public interface Identifiable {
     String getId();
 
     /**
-     * Get the name associated with this identifiable.
+     * Get the full qualified name associated with this identifiable.
      * @return Name as a string.
      */
     String getName();

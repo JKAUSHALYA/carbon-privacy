@@ -36,8 +36,44 @@ public class DefaultIdManager implements IdManager {
     }
 
     @Override
+    public Identifiable getIdentifiableFromName(String name) throws IdManagerException {
+
+        return new Identifiable() {
+            @Override
+            public String getId() {
+
+                return null;
+            }
+
+            @Override
+            public String getName() {
+
+                return name;
+            }
+        };
+    }
+
+    @Override
+    public Identifiable getIdentifiableFromId(String id) throws IdManagerException {
+
+        return new Identifiable() {
+            @Override
+            public String getId() {
+
+                return id;
+            }
+
+            @Override
+            public String getName() {
+
+                return null;
+            }
+        };
+    }
+
+    @Override
     public Identifiable addIdForName(Identifiable identifiable) throws IdManagerException {
-        return null;
+        return identifiable;
     }
 
     @Override
